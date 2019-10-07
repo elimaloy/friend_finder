@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <script src="https://code.jquery.com/jquery.js"></script>
+ 
+</head>
+
+<body>
+
+    
+        <h3>Question 1</h3>
+        <h4>Do you look dogs?</h4>
+        <select class="custom-select" id="question1">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 </option>
+        </select>
+
+        <h3>Question 2</h3>
+        <h4>Do you love cats?</h4>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <h3>Question 3</h3>
+        <h4>Do you like to surf?</h4>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <h3>Question 4</h3>
+        <h4>Do you like to ski?</h4>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <h3>Question 5</h3>
+        <h4>DO you like to travel?</h4>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <h3>Question 6</h3>
+        <h4>Do you like to read?</h4>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <h3>Question 7</h3>
+        <h4>Do you like to cook?</h4>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <h3>Question 8</h3>
+        <h4>DO you like the outdoors?</h4>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <h3>Question 9</h3>
+        <h4>Do you like to go to the movies?</h4>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <h3>Question 10</h3>
+        <h4>DO you like to drive?</h4>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <br/><br/>
+        
+
+<script type="text/javascript">
+$("#add-btn").on("click", function(event) {
+event.preventDefault();
+var newFriend = {
+  name: $("#name").val().trim(),
+  photo: $("#phone").val().trim(),
+  preferences: [$("#question1").val(), $("#question2").val(), $("#question3").val(), $("#question4").val(), $("#question5").val(), $("#question6").val(), $("#question7").val(), $("#question8").val(), $("#question9").val(), $("#question10").val()]
+};
+$("#friend-form").html("your new best friend!");
+$.post("/api/friends", newFriend)
+.done(function(data) {
+  $("#match-name").text(data.name);
+  $("#match-image").attr("src", data.photo);
+});
+});
+$("#close-modal").on("click", function(){
+  setTimeout(function(){location.reload()}, 1000);
+});
+</script>
+</body>
+</html>
